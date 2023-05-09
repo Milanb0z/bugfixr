@@ -1,0 +1,53 @@
+:root {
+  --color-primary: #6418c3;
+
+  --color-dark-01: #0d0b21;
+  --color-dark-02: #15132b;
+  --color-dark-03: #1c1a33;
+  --color-dark-04: #1e1c3a;
+  --color-dark-05: #464366;
+
+  --color-green: #38e25d;
+
+  --color-heading: #ffffff;
+  --color-body: #a5a5a5;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  color: var(--color-heading);
+  background-color: var(--color-dark-01);
+  font-family: "Cairo", sans-serif;
+}
+
+h1 {
+  font-size: 2em;
+}
+h2 {
+  font-size: 1.5em;
+}
+h3 {
+  font-size: 1.125em;
+}
+p {
+  font-size: 1.125em;
+  color: var(--color-body);
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
