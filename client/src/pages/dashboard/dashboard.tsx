@@ -1,11 +1,13 @@
+import React from "react";
 import { Outlet } from "react-router-dom";
+
+import DashboardWrapper from "../../hoc/dashboardWrapper/dashboardWrapper";
 
 const Dashboard = () => {
   return (
-    <div>
-      Dashboard
+    <DashboardWrapper>
       <Outlet />
-    </div>
+    </DashboardWrapper>
   );
 };
 

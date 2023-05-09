@@ -1,5 +1,7 @@
+import React from "react";
+
 const NewBug = () => {
-  return <div>NewBug</div>;
+  return <h2>New Bug</h2>;
 };
 
 export default NewBug;

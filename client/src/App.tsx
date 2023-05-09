@@ -1,3 +1,5 @@
+import React from "react";
+
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import classes from "./app.module.scss";
@@ -36,11 +38,7 @@ const router = createBrowserRouter([
 ]);
 
 const App: React.FC = () => {
-  return (
-    <div className={classes.wrapper}>
-      <RouterProvider router={router} />
-    </div>
-  );
+  return <RouterProvider router={router} />;
 };
 
 export default App;
