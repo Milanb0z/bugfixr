@@ -1,5 +1,3 @@
-import { JSX } from "react";
-
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import classes from "./app.module.scss";

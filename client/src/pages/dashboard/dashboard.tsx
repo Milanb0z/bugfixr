@@ -1,9 +1,6 @@
-import React from "react";
 import { Outlet } from "react-router-dom";
 
-type Props = {};
-
-const Dashboard = (props: Props) => {
+const Dashboard = () => {
   return (
     <div>
       Dashboard

@@ -1,8 +1,4 @@
-import React from "react";
-
-type Props = {};
-
-const Bugs = (props: Props) => {
+const Bugs = () => {
   return <div>Bugs</div>;
 };
 
