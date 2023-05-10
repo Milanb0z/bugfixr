@@ -9,10 +9,10 @@ type Props = {
 };
 
 const STATIC_LINKS = [
-  { title: "Bugs", link: "/dashboard" },
-  { title: "NewBug", link: "/dashboard/new" },
-  { title: "Bug", link: "/dashboard/sdsd" },
-  { title: "Profile", link: "/dashboard/profile" },
+  { title: "Bugs", link: "/bugs" },
+  { title: "NewBug", link: "/bugs/new" },
+  { title: "Bug", link: "/bugs/sdsd" },
+  { title: "Profile", link: "/profile" },
 ];
 
 const DashboardWrapper = ({ children }: Props) => {
