@@ -17,6 +17,25 @@ router.post("/new", async (req, res) => {
   }
 });
 
+router.delete("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const fetchedBug = await Bug.findById(id);
+
+    if (!fetchedBug) {
+      res.status(404).send({ error: "Bug Not Found" });
+    }
+
+    const deletedBug = await Bug.findByIdAndDelete(id);
+
+    res.send(deletedBug);
+  } catch (error) {
+    console.error({ error });
+    res.status(500).send({ error });
+  }
+});
+
 router.get("/", async (req, res) => {
   try {
     const allBugs = await Bug.find();
