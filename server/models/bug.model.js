@@ -5,6 +5,11 @@ const bugSchema = mongoose.Schema({
     required: true,
     type: String,
   },
+  bug_id: {
+    type: Number,
+    required: true,
+    default: 0,
+  },
   description: {
     required: false,
     type: String,
@@ -26,6 +31,25 @@ bugSchema.set("toJSON", {
     delete ret._id;
     delete ret.__v;
   },
+});
+
+bugSchema.pre("save", async function (next) {
+  try {
+    console.log(":xsd");
+    let bug_id = 1;
+    const higgestIndex = await Bug.findOne().sort("-bug_id");
+    console.log(higgestIndex);
+    if (higgestIndex) {
+      bug_id = higgestIndex.bug_id + 1;
+    }
+
+    this.bug_id = bug_id;
+
+    next();
+  } catch (error) {
+    console.error(error);
+    throw new Error({ error });
+  }
 });
 
 const Bug = new mongoose.model("Bug", bugSchema);

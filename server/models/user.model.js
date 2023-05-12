@@ -3,6 +3,8 @@ const bcrypt = require("bcrypt");
 
 const Joi = require("joi");
 
+const VALID_LABELS = ["bug", "feature", "help wanted", "enhancement"];
+
 const userSchema = mongoose.Schema({
   username: {
     unique: true,
@@ -25,6 +27,10 @@ const userSchema = mongoose.Schema({
   date_joined: {
     type: Date,
     default: Date.now,
+  },
+  labels: {
+    type: [String],
+    enum: VALID_LABELS,
   },
   isVerified: { type: Boolean, default: false },
 });
