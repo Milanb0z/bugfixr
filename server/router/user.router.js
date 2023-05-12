@@ -1,6 +1,7 @@
 const router = require("express").Router();
 
 const { User } = require("../models/user.model");
+const generateToken = require("../utils/generateToken");
 
 //Create User
 router.get("/all", async (req, res) => {
@@ -21,7 +22,9 @@ router.post("/register", async (req, res) => {
     const newUser = new User({ username, email, bio, password });
     const savedUser = await newUser.save();
 
-    res.send(savedUser);
+    const token = await generateToken(savedUser.id);
+
+    res.send(token);
   } catch (error) {
     console.error({ error });
     res.status(500).send([error]);
@@ -43,7 +46,11 @@ router.post("/login", async (req, res) => {
       return res.status(400).send({ error: "Invalid Credentials" });
     }
 
-    res.send(fetchedUser);
+    const token = await generateToken(fetchedUser.id);
+
+    console.log(token);
+
+    res.send(token);
   } catch (error) {
     console.error({ error });
     res.status(500).send([error]);
