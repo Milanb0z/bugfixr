@@ -8,7 +8,6 @@ const isAuth = require("../middleware/auth");
 
 router.post("/new", isAuth, async (req, res) => {
   try {
-    console.log(req.user);
     const { title, description } = req.body;
 
     const newBug = new Bug({ title, description, author: req.user.id });
