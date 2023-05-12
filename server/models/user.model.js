@@ -38,18 +38,20 @@ userSchema.set("toJSON", {
   },
 });
 
-userSchema.methods.isValidPassword = async function (password) {
+// Hashing Password
+userSchema.pre("save", async function (next) {
+  try {
+    const hashedPass = await bcrypt.hash(this.password, 10);
+    this.password = hashedPass;
+    next();
+  } catch (error) {
+    throw new Error({ error });
+  }
+});
+
+userSchema.methods.isPasswordValid = async function (password) {
   try {
     return await bcrypt.compare(password, this.password);
-  } catch (err) {
-    console.log(err);
-    throw new Error(err);
-  }
-};
-
-userSchema.methods.hashPassword = async function (password) {
-  try {
-    return await bcrypt.hash(password, 10);
   } catch (err) {
     console.log(err);
     throw new Error(err);

@@ -21,12 +21,6 @@ router.delete("/:id", async (req, res) => {
   try {
     const { id } = req.params;
 
-    const fetchedBug = await Bug.findById(id);
-
-    if (!fetchedBug) {
-      res.status(404).send({ error: "Bug Not Found" });
-    }
-
     const deletedBug = await Bug.findByIdAndDelete(id);
 
     res.send(deletedBug);
