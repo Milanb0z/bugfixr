@@ -1,12 +1,17 @@
 const router = require("express").Router();
 
+//Models
 const Bug = require("../models/bug.model");
 
-router.post("/new", async (req, res) => {
+//Middleware
+const isAuth = require("../middleware/auth");
+
+router.post("/new", isAuth, async (req, res) => {
   try {
+    console.log(req.user);
     const { title, description } = req.body;
 
-    const newBug = new Bug({ title, description });
+    const newBug = new Bug({ title, description, author: req.user.id });
 
     const savedBug = await newBug.save();
 
@@ -45,7 +50,7 @@ router.get("/:id", async (req, res) => {
   try {
     const { id } = req.params;
 
-    const bug = await Bug.findById(id);
+    const bug = await Bug.findById(id).populate("author");
 
     if (!bug) {
       res.status(404).send({ error: "Bug Not Found" });
